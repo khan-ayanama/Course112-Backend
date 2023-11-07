@@ -1,4 +1,4 @@
-# Node Day - 2
+# Node Internals
 
 ## What does NodeJS Do?
 

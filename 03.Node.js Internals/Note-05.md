@@ -1,23 +1,4 @@
-# Notes- 03
-
-## CommonJS vs Ecmascript Modules
-
-* When we use relative file path for js file "./index.js" you need to specify the extension.
-* When you want to import file in js you need to define it's type:module in package.json or set the extensions of file as ".mjs"
-
-## Module Caching
-
-NodeJS Caches the module first time it is imported in the file if you try to import second time the functions from the same module it will not import from that module but from the cache created by the node when first time the functions from same module was imported.
-
-## index.js
-
-It is special case in node if index.js file in folder that folder will be treated as module after adding we can use require function
-
-## Should we use index.js
-
-Generally we should not use index.js
-
-## Node Package Manager(npm)
+# Node Package Manager(npm)
 
 It serves several essential purposes:
 
