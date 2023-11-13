@@ -45,7 +45,8 @@ Here's an example of CORS headers in a server response:
     Access-Control-Allow-Headers: Content-Type
     Access-Control-Allow-Credentials: true
 ```
-In this example, the server allows cross-origin requests from https://example.com, permits GET, POST, and PUT methods, allows the Content-Type header, and includes credentials in the request.
+
+In this example, the server allows cross-origin requests from `https://example.com`, permits GET, POST, and PUT methods, allows the Content-Type header, and includes credentials in the request.
 
 CORS is essential for enabling secure cross-origin communication on the web. It helps prevent unauthorized access to sensitive data while allowing legitimate cross-origin requests based on server configurations.
 

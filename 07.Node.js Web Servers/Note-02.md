@@ -84,7 +84,6 @@
     })
 ```
 
-
 ## Routing with parametrized URL
 
 ```js
