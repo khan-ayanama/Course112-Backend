@@ -55,7 +55,7 @@ Resources can have multiple representations (e.g., JSON, XML) based on the clien
 HATEOAS is a constraint in REST which means that a client interacts with the API entirely through hypermedia provided dynamically by the server.
 Responses contain links to related resources, allowing clients to navigate the API without prior knowledge.
 
-7. ` Example:`
+7. `Example:`
 To retrieve a list of posts, a client would send a GET request to the URI representing the posts resource: GET /posts.
 To create a new post, a client would send a POST request with the post data to the same URI: POST /posts.
 To update a specific post, a client would send a PUT or PATCH request to the URI of that post: PUT /posts/{postId} or PATCH /posts/{postId}.
@@ -63,6 +63,158 @@ RESTful APIs are widely used due to their simplicity, scalability, and ease of u
 
 ## Serving files from Node
 
+In Node.js, you can serve files using the built-in fs (File System) module along with the http or express module. I'll show you a basic example using the http module:
+
+```javascript
+    const http = require('http');
+    const fs = require('fs');
+    const path = require('path');
+
+    const server = http.createServer((req, res) => {
+        // Get the file path based on the URL
+        const filePath = path.join(__dirname, 'public', req.url);
+
+        // Check if the file exists
+        fs.access(filePath, fs.constants.F_OK, (err) => {
+            if (err) {
+                // File not found
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('404 Not Found');
+                return;
+            }
+
+            // Read the file and stream it to the response
+            const fileStream = fs.createReadStream(filePath);
+            fileStream.pipe(res);
+        });
+    });
+
+    const PORT = 3000;
+    server.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}/`);
+    });
+```
+
+In this example:
+
+We create an HTTP server using http.createServer.
+
+Inside the server callback, we construct the file path based on the requested URL using path.join.
+We use fs.access to check if the file exists. If it doesn't, we return a 404 response.
+If the file exists, we create a readable stream (fs.createReadStream) and pipe it to the response (res) to send the file to the client.
+Make sure to adjust the __dirname and the folder structure based on your project. This is a basic example, and in a real-world scenario, you might want to consider additional features like MIME type handling, security measures, and more.
+
+If you're working with a more complex application, using a framework like Express can simplify file serving and provide additional features
+
 ## Serving more than one file from Node
 
-## Express Engines
+If you want to serve multiple files in Node.js, you can modify the previous example to handle different types of requests and serve the corresponding files. Here's an example using the express framework for simplicity:
+
+First, install Express using npm:
+
+```bash
+    npm install express
+```
+
+Now, create a server that serves multiple files:
+
+```javascript
+    const express = require('express');
+    const path = require('path');
+
+    const app = express();
+    const PORT = 3000;
+
+    // Define a route to serve static files from the 'public' folder
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}/`);
+    });
+```
+
+In this example:
+
+We use express.static middleware to serve static files from the 'public' folder. This means any file in the 'public' folder can be accessed directly via its URL.
+
+Ensure that your project structure looks like this:
+
+```arduino
+    project-root
+    └── public
+        ├── file1.html
+        ├── file2.css
+        └── file3.js
+```
+
+Now, if you have file1.html, file2.css, and file3.js in your 'public' folder, you can access them in your browser using the following URLs:
+
+```bash
+    http://localhost:3000/file1.html
+    http://localhost:3000/file2.css
+    http://localhost:3000/file3.js
+```
+
+This is a basic setup. Depending on your requirements, you might want to add additional routes or implement more sophisticated file serving logic.
+
+## Express view Engines
+
+In Express, view engines allow you to render dynamic content and templates on the server before sending a response to the client. Common view engines include EJS (Embedded JavaScript), Pug (formerly Jade), Handlebars, and others.
+
+Here's an example using the EJS view engine in an Express application. First, install EJS:
+
+```bash
+    npm install ejs
+```
+
+Now, create an Express app that uses EJS as the view engine:
+
+```javascript
+    const express = require('express');
+    const path = require('path');
+
+    const app = express();
+    const PORT = 3000;
+
+    // Set EJS as the view engine
+    app.set('view engine', 'ejs');
+
+    // Set the views directory
+    app.set('views', path.join(__dirname, 'views'));
+
+    // Define a route to render an EJS template
+    app.get('/', (req, res) => {
+        // Render the 'index.ejs' template
+        res.render('index', { title: 'Express with EJS' });
+    });
+
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}/`);
+    });
+```
+
+In this example:
+
+We set EJS as the view engine using app.set('view engine', 'ejs').
+We set the views directory using app.set('views', path.join(__dirname, 'views')). This is where Express will look for your EJS templates.
+We define a route for the root URL ('/') that renders the 'index.ejs' template using res.render. The second argument is an object containing data to be passed to the template.
+Now, create a folder named 'views' in your project root and add an 'index.ejs' file inside it:
+
+```ejs
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <p>Welcome to Express with EJS!</p>
+    </body>
+    </html>
+```
+
+When you run your Express app and navigate to `http://localhost:3000/`, you should see a page with the title "Express with EJS" and a welcome message.
+
+This is a basic setup using the EJS view engine. Depending on your needs, you might choose a different view engine or customize your templates further.
