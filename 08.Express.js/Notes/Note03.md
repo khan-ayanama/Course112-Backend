@@ -3,49 +3,49 @@
 In Express.js, the MVC (Model-View-Controller) architecture is a design pattern used to structure applications in a way that separates the concerns of data management, user interface, and application logic. Here's how you can implement MVC architecture in an Express.js application:
 
 1. `Model:`
-The model represents the data and business logic of the application. It interacts with the database, performs validations, and contains the application's data-related logic. In Express.js, you can use an ORM (Object-Relational Mapping) library like Sequelize or Mongoose to interact with databases.
+    The model represents the data and business logic of the application. It interacts with the database, performs validations, and contains the application's data-related logic. In Express.js, you can use an ORM (Object-Relational Mapping) library like Sequelize or Mongoose to interact with databases.
 
-Example Model (using Mongoose for MongoDB):
+    Example Model (using Mongoose for MongoDB):
 
-```javascript
-    const mongoose = require('mongoose');
+    ```javascript
+        const mongoose = require('mongoose');
 
-    const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    }
-    });
+        const userSchema = new mongoose.Schema({
+        username: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true
+        }
+        });
 
-    const User = mongoose.model('User', userSchema);
-    module.exports = User;
-```
+        const User = mongoose.model('User', userSchema);
+        module.exports = User;
+    ```
 
 2. `View:`
-The view is responsible for rendering the user interface and displaying data to the user. In Express.js, views are typically implemented using template engines like EJS, Pug, or Handlebars.
+    The view is responsible for rendering the user interface and displaying data to the user. In Express.js, views are typically implemented using template engines like EJS, Pug, or Handlebars.
 
-Example View (using EJS):
+    Example View (using EJS):
 
-```html
-    <!-- views/user.ejs -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details</title>
-    </head>
-    <body>
-    <h1>User Details</h1>
-    <p>Username: <%= user.username %></p>
-    <p>Email: <%= user.email %></p>
-    </body>
-    </html>
-```
+    ```html
+        <!-- views/user.ejs -->
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Details</title>
+        </head>
+        <body>
+        <h1>User Details</h1>
+        <p>Username: <%= user.username %></p>
+        <p>Email: <%= user.email %></p>
+        </body>
+        </html>
+    ```
 
 3. `Controller:`
 The controller handles user input and requests, processes them using the model, and selects the view to render. It contains the application's business logic. Controllers in Express.js are responsible for defining route handlers.
@@ -80,7 +80,7 @@ Example Controller:
 
 In this example, the controller handles a GET request for retrieving user details by ID. It interacts with the User model to fetch the user data and renders the 'user' view, passing the user data to be displayed.
 
-By following the MVC pattern, you can keep your codebase organized, modular, and easy to maintain, allowing for a clear separation of concerns within your Express.js application. 
+By following the MVC pattern, you can keep your codebase organized, modular, and easy to maintain, allowing for a clear separation of concerns within your Express.js application.
 
 ## Routers
 

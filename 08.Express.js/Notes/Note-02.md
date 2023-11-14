@@ -32,6 +32,7 @@ Here's a basic example of how middleware works in Express.js:
     console.log('Server is running on port 3000');
     });
 ```
+
 In this example:
 
 Middleware function 1: It runs for every incoming request, logging a message and then calling the next middleware function in the stack.
