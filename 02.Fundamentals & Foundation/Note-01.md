@@ -25,7 +25,7 @@ The Node.js release cycle consists of different stages, allowing developers to a
 * Node.js follows a time-based release schedule, meaning that new releases occur on a fixed timeline rather than when specific features are ready.
 * The exact dates for releases can be found on the official Node.js website or GitHub repository.
 
-`Semver Versioning:`
+`Semventic Versioning:`
 
 * Node.js follows Semantic Versioning (Semver), which means that each release is assigned a version number in the format of MAJOR.MINOR.PATCH.
 * MAJOR version changes indicate incompatible API changes.
@@ -41,7 +41,7 @@ In Node.js, the REPL stands for Read-Eval-Print Loop. It's an interactive progra
 You can start the Node.js REPL by opening a terminal or command prompt and typing node without any arguments. Press Enter, and you'll enter the REPL mode.
 
 ```git
-    $ node
+     node
 ```
 
 `Basic Usage:`
@@ -55,6 +55,7 @@ For example, you can perform basic arithmetic operations:
 ```
 
 You can declare variables and use them in subsequent expressions:
+
 ```javascript
     > let name = "Boss"
     undefined
@@ -95,7 +96,7 @@ The REPL provides special commands prefixed with a dot (.) to perform various ta
 
 In Node.js, the process object is a global object that provides information and control over the current Node.js process. It allows you to interact with the operating system, manage environment variables, and control the flow of the program. Here are some common properties and methods provided by the process object:
 
-### Properties:
+### Properties
 
 `process.argv:`
 
@@ -121,7 +122,6 @@ An object containing the user environment. You can access environment variables 
 The process ID of the current Node.js process.
 
 ```javascript
-    Copy code
     console.log(process.pid);
     // Output: Process ID, e.g., 12345
 ```
@@ -135,7 +135,7 @@ A string indicating the operating system platform on which the Node.js process i
     // Output: darwin (on macOS, for example)
 ```
 
-### Methods:
+### Methods
 
 `process.exit([code]):`
 
@@ -175,6 +175,7 @@ Allows you to register event handlers for various process events. For example, y
 ## First Program of Node
 
 ```js
+    // WITHOUT USER INPUT
     // const mission = 'learn';
 
     // if(mission=='learn'){
@@ -183,8 +184,7 @@ Allows you to register event handlers for various process events. For example, y
     //     console.log(`Is ${mission} really a fun`)
     // }
 
-
-
+    // WITH USER INPUT
     // Taking input by user at 2nd index
     const mission = process.argv[2];
 

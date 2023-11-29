@@ -2,23 +2,23 @@
 
 It serves several essential purposes:
 
-### Package Management
+## Package Management
 
 NPM is primarily used for managing packages (libraries and modules) in Node.js. It allows you to easily install, update, and remove packages that your project depends on. You can define these dependencies in a package.json file.
 
-### Dependency Resolution
+## Dependency Resolution
 
 NPM resolves and manages the dependencies of your project, ensuring that the correct versions of packages are installed and that there are no conflicts between them. This helps maintain consistency and stability in your project.
 
-### Script Execution
+## Script Execution
 
 NPM lets you define and run custom scripts in your project. These scripts can automate various tasks such as testing, building, deployment, and more. You can configure these scripts in your package.json file.
 
-### Version Control Integration
+## Version Control Integration
 
 Many developers use NPM to manage their project's dependencies and scripts. NPM makes it easy to share your project with others by including a package.json file in your version control system (e.g., Git). This allows others to recreate the same development environment with a simple npm install command.
 
-### Global Packages
+## Global Packages
 
 NPM also allows you to install packages globally on your system. These global packages can provide command-line tools or utilities that you can use across multiple projects.  
 
@@ -49,12 +49,12 @@ Here are some commonly used NPM commands:
 
 Third-party libraries in Node.js are external packages or modules created by developers or organizations other than the core Node.js maintainers. These libraries extend the functionality of Node.js by providing pre-built solutions for various tasks, such as handling HTTP requests, working with databases, managing authentication, and much more. Here's how you can use third-party libraries in Node.js:
 
-1. Installing Third-Party Libraries:
+1. `Installing Third-Party Libraries:`
 
     * To use a third-party library in your Node.js project, you first need to install it using npm (Node Package Manager) or yarn (another package manager for Node.js).
     * Use the npm install `<package-name>` or yarn add `<package-name>` command to install the library. Replace `<package-name>` with the actual name of the library you want to install.
 
-2. Importing and Using Third-Party Libraries:
+2. `Importing and Using Third-Party Libraries:`
 
     * After installing the library, you can import and use it in your Node.js code.
     * Use the require function to import the library, just like you would with built-in Node.js modules.
@@ -79,16 +79,16 @@ Third-party libraries in Node.js are external packages or modules created by dev
             });
         ```
 
-3. Managing Dependencies:
+3. `Managing Dependencies:`
 
     * When you install a third-party library, it's added as a dependency to your project's package.json file.
     * It's essential to keep track of your project's dependencies, as this helps ensure that other developers working on your project or deploying it to different environments can install the required dependencies easily.
 
-4. Documentation:
+4. `Documentation:`
 
     * Most third-party libraries come with documentation that explains how to use them, including examples and usage guidelines. Be sure to refer to the library's documentation to understand its features and capabilities.
 
-5. Version Control:
+5. `Version Control:`
 
     * When working on a Node.js project that uses third-party libraries, it's common practice to include the node_modules directory (where the dependencies are stored) in your .gitignore file. This prevents you from accidentally committing a large number of library files to your version control system.
     * Using third-party libraries in Node.js can significantly speed up development by providing ready-made solutions for common tasks. However, it's essential to choose reputable and well-maintained libraries, keep them updated, and be aware of any licensing considerations when using external code in your projects.
