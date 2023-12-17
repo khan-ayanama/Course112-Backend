@@ -16,7 +16,7 @@
     Module Caching
     Using index.js
 
-1. `Package Management`
+3. `Package Management`
 
     NPM: The Node Package Manager
     Creating Your Own Packages
