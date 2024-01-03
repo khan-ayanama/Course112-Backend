@@ -106,25 +106,21 @@ server.on("request", (req, res) => {
 
         req.on("end", () => {
           try {
-            let { id, title, status } = JSON.parse(patchData);
-            if (id) {
-              patchElement = toDoList[id];
-              if (status == undefined) {
-                status = patchElement.status;
-              }
-              toDoList[id] = {
-                id: id,
-                title: title || patchElement.title,
-                status: status,
+            let patchedObject = JSON.parse(patchData);
+
+            if (patchedObject.id != null || undefined) {
+              toDoList[patchedObject.id] = {
+                ...toDoList[patchedObject.id],
+                ...patchedObject,
               };
               res.writeHead(201, { "Content-Type": "application/json" });
               return res.end(JSON.stringify(toDoList));
             } else {
-              throw new Error("Invalid Data!!");
+              throw new Error();
             }
           } catch (error) {
             res.writeHead(422, { "Content-type": "application/json" });
-            res.end(JSON.stringify({ error: error.message }));
+            res.end(JSON.stringify({ error: "Invalid JSON DATA" }));
           }
         });
       } else {
@@ -158,7 +154,7 @@ server.on("request", (req, res) => {
             }
           } catch (error) {
             res.writeHead(400, { "content-type": "application/json" });
-            res.end(JSON.stringify({ error: error.message }));
+            res.end(JSON.stringify({ error: "Provide Valid ID" }));
           }
         });
       } else {

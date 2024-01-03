@@ -6,13 +6,12 @@ In JavaScript, the URL object is used for working with URLs (Uniform Resource Lo
 You can create a URL object by using the URL constructor:
 
 ```javascript
-Copy code
-    // Creating a URL object from a string
-    const urlString = "https://www.example.com/path?query=value";
-    const url = new URL(urlString);
+// Creating a URL object from a string
+const urlString = "https://www.example.com/path?query=value";
+const url = new URL(urlString);
 
-    // Creating a URL object from another URL object
-    const anotherURL = new URL(url);
+// Creating a URL object from another URL object
+const anotherURL = new URL(url);
 ```
 
 **Properties of the URL Object:**
@@ -40,16 +39,16 @@ The URL object also provides methods for modifying and working with URLs:
 `Example:`
 
 ```javascript
-    const urlString = "https://www.example.com/path?query=value";
-    const url = new URL(urlString);
+const urlString = "https://www.example.com/path?query=value";
+const url = new URL(urlString);
 
-    console.log(url.href);      // "https://www.example.com/path?query=value"
-    console.log(url.hostname);  // "www.example.com"
-    console.log(url.pathname);  // "/path"
-    console.log(url.search);    // "?query=value"
+console.log(url.href); // "https://www.example.com/path?query=value"
+console.log(url.hostname); // "www.example.com"
+console.log(url.pathname); // "/path"
+console.log(url.search); // "?query=value"
 
-    url.searchParams.set("newParam", "123");
-    console.log(url.href);      // "https://www.example.com/path?query=value&newParam=123"
+url.searchParams.set("newParam", "123");
+console.log(url.href); // "https://www.example.com/path?query=value&newParam=123"
 ```
 
 The URL object is useful when you need to work with URLs in a programmatic way, such as extracting or modifying specific components of a URL. Keep in mind that the URL object is not available in all JavaScript environments (e.g., Node.js), as it is primarily designed for web browsers.
