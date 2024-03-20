@@ -1,5 +1,5 @@
-const toDoList = require("./toDoList.js");
-const sendResponse = require("./sendResponse.js");
+const toDoList = require("../Data/toDoList.js");
+const sendResponse = require("../sendResponse.js");
 
 const handleGetRequest = (req, res) => {
   console.log("INSIDE MODULE");

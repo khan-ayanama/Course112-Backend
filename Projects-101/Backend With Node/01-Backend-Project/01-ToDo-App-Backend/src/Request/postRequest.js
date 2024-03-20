@@ -1,19 +1,10 @@
-const toDoList = require("./toDoList.js");
-const sendResponse = require("./sendResponse.js");
-
-const isValidJSON = (res, response) => {
-  try {
-    JSON.parse(response);
-    return true;
-  } catch (error) {
-    sendResponse(res, 400, { message: "Enter Valid JSON data134!!" });
-    return false;
-  }
-};
+toDoList = require("../Data/toDoList.js");
+const sendResponse = require("../sendResponse.js");
+const isValidJSON = require("../utilities/isValidJSON.js");
 
 const createToDo = (postData) => {
   const toDo = {
-    id: toDoList.length,
+    id: toDoList.length + postData.title.slice(0, 3),
     title: postData.title,
     status: postData.status || false,
   };
